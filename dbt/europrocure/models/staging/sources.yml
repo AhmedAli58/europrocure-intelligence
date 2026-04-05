@@ -1,0 +1,28 @@
+version: 2
+
+sources:
+  - name: raw
+    database: EUROPROCURE_DB
+    schema: RAW
+    tables:
+      - name: ted_contracts
+        description: "Raw TED Contract Award Notices 2018-2023"
+        columns:
+          - name: ID_NOTICE_CAN
+            description: "Unique identifier for each contract award notice"
+            tests:
+              - not_null
+          - name: YEAR
+            description: "Year the notice was published"
+            tests:
+              - not_null
+          - name: ISO_COUNTRY_CODE
+            description: "2-letter ISO country code of the buying authority"
+            tests:
+              - not_null
+          - name: TOP_TYPE
+            description: "Type of procurement procedure"
+            tests:
+              - not_null:
+                  config:
+                    severity: warn
